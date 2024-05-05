@@ -9,7 +9,7 @@ MODEL_DIR = os.path.join(os.path.dirname(__file__), 'best_model.keras')
 if not os.path.isdir(MODEL_DIR):
     os.system('runipy train.ipynb')
 
-model = load_model('best_model.keras')
+model = load_model('best_model.keras', compile=False)
 # st.markdown('<style>body{color: White; background-color: DarkSlateGrey}</style>', unsafe_allow_html=True)
 
 st.title('Reconocedor de números')
