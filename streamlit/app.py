@@ -38,18 +38,6 @@ canvas_result = st_canvas(
     key='canvas')
     
 
-# if st.button("Borrar lienzo"):
-#     canvas_container.empty()
-#     canvas_result = canvas_container.st_canvas(
-#     fill_color='#000000',
-#     stroke_width=20,
-#     stroke_color='#FFFFFF',
-#     background_color='#000000',
-#     width=SIZE,
-#     height=SIZE,
-#     drawing_mode="freedraw",# if mode else "transform",
-#     key='canvas')
-
 if canvas_result.image_data is not None:
     img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
     rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
