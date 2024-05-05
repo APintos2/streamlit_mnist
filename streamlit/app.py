@@ -5,9 +5,9 @@ from tensorflow.keras.models import load_model
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 
-# MODEL_DIR = os.path.join(os.path.dirname(__file__), 'best_model.keras')
-# if not os.path.isdir(MODEL_DIR):
-#     os.system('runipy train.ipynb')
+MODEL_DIR = os.path.join(os.path.dirname(__file__), '../best_model.keras')
+if not os.path.isdir(MODEL_DIR):
+    os.system('runipy train.ipynb')
 
 model = load_model('../best_model.keras')
 # st.markdown('<style>body{color: White; background-color: DarkSlateGrey}</style>', unsafe_allow_html=True)
@@ -46,6 +46,7 @@ if canvas_result.image_data is not None:
 
 if st.button('Predecir'):
     x_test = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    x_test = x_test.astype("float32")/255
     val = model.predict(x_test.reshape(-1, 28, 28, 1))
     st.write(f'Resultado: {np.argmax(val[0])}')
     st.bar_chart(val[0])
